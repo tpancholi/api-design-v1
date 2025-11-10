@@ -6,7 +6,7 @@ app.get("/health", (context) => {
     return {
         status: "OK",
         timestamp: new Date().toISOString(),
-        service: "Habbit Tracker API",
+        service: "Habit Tracker API",
     }
 })
 

@@ -12,15 +12,14 @@
   "author": "Tejas Pancholi",
   "license": "ISC",
   "scripts": {
-    "dev": "bun run --watch src/server.ts",
-    "start": "bun run src/server.ts",
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
-    "custom-env": "^2.0.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
     "drizzle-typebox": "^0.3.3",
