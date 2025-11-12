@@ -17,8 +17,30 @@ const app = new Elysia()
             version: process.env.npm_package_version || "1.0.0"
         }
     })
-    .onError(({code, error}) => {
+    // Catch-all for non-API routes
+    .all("*", (context) => {
+        context.set.status = 404;
+        return {
+            success: false,
+            message: `Route not found: ${context.request.method} ${context.request.url}`,
+            path: context.request.url,
+            method: context.request.method,
+            timestamp: new Date().toISOString()
+        };
+    })
+    .onError(({ code, error, request }) => {
         console.error(`Error ${code}:`, error);
+
+        if (code === 'NOT_FOUND') {
+            return {
+                success: false,
+                message: `Resource not found: ${request.method} ${request.url}`,
+                path: request.url,
+                method: request.method,
+                timestamp: new Date().toISOString()
+            };
+        }
+
         return {
             success: false,
             message: "Internal server error",
