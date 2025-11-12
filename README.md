@@ -7,9 +7,14 @@ bun create elysia ./elysia-example
 ```
 
 ## Development
-To start the development server run:
+
+- To start the development server run:
 ```bash
 bun run dev
+```
+- To generate JWT secret key
+```bash
+bun -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
 Open http://localhost:3000/ with your browser to see the result.
